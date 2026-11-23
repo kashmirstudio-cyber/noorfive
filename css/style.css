@@ -1,0 +1,142 @@
+/*
+VOICE: warm, glamorous, friendly — a small studio that makes makeup games.
+IDEA: an open makeup compact; "Noor" means light, so the page glows like a vanity mirror.
+PICTURE: a large drawn compact with eyeshadow pans, lipstick and sparkles in the hero.
+COLOUR and TYPE: blush ground, berry pink lead, champagne gold accent; Playfair Display + Nunito.
+LAYOUT: sticky nav, full-width bands, cards in wrapping grids, stacked under 600px.
+*/
+:root{
+  color-scheme:light dark;
+  --bg:light-dark(#fff5f3,#1b0b13);
+  --bg2:light-dark(#ffe6ea,#2a1220);
+  --card:light-dark(#ffffff,#33172a);
+  --ink:light-dark(#2b0f1d,#fbe9ef);
+  --muted:light-dark(#6e4a5b,#d7b6c4);
+  --berry:light-dark(#c2185b,#ff6fa5);
+  --berry-deep:#8e0f43;
+  --gold:light-dark(#b8862e,#e6c178);
+  --line:light-dark(#f2cdd8,#4a2238);
+  --shadow:0 14px 40px light-dark(rgba(142,15,67,.12),rgba(0,0,0,.45));
+}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Nunito",system-ui,sans-serif;overflow-x:clip}
+img,svg{max-width:100%;display:block}
+a{color:var(--berry)}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.1;margin:0 0 .5em;text-wrap:balance}
+h1{font-size:clamp(36px,5.5vw,60px)}
+h2{font-size:clamp(28px,3.6vw,42px)}
+h3{font-size:22px}
+p{margin:0 0 1em;max-width:68ch}
+.wrap{max-width:1200px;margin:0 auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,18px)}
+.band.alt{background:var(--bg2)}
+.lead{font-size:clamp(18px,1.6vw,20px);color:var(--muted)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1200px;margin:0 auto;padding:12px max(5vw,18px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:"Playfair Display",serif;font-weight:700;font-size:24px}
+.brand svg{width:40px;height:40px}
+.brand b{color:var(--berry)}
+.menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.menu a{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:700}
+.menu a:hover{background:var(--bg2)}
+.menu a[aria-current=page]{background:var(--berry);color:#fff}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:22px;cursor:pointer}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;font-weight:800;text-decoration:none;border:2px solid var(--berry);background:var(--berry);color:#fff;cursor:pointer;font:inherit;font-weight:800}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--berry)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1 em{font-style:italic;color:var(--berry)}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;filter:drop-shadow(0 24px 40px rgba(142,15,67,.22))}
+.sparkle{animation:twinkle 2.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+.sparkle:nth-of-type(2){animation-delay:.8s}.sparkle:nth-of-type(3){animation-delay:1.6s}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@media(prefers-reduced-motion:reduce){.sparkle{animation:none}html{scroll-behavior:auto}}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
+.card p:last-child{margin-bottom:0}
+.icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--bg2);margin-bottom:14px}
+.icon svg{width:28px;height:28px;stroke:var(--berry);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Game card */
+.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:0;padding:0;overflow:hidden}
+.game-art{background:linear-gradient(160deg,#ffb7cc,#c2185b);min-height:280px;display:grid;place-items:center;padding:24px}
+.game-art svg{width:min(240px,80%)}
+.game-body{padding:clamp(22px,3vw,36px)}
+.tag{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--bg2);color:var(--berry);font-weight:800;font-size:14px;margin:0 6px 10px 0}
+.tag.gold{color:var(--gold)}
+ul.ticks{padding:0;list-style:none;margin:0 0 1em}
+ul.ticks li{padding-left:28px;position:relative;margin-bottom:6px}
+ul.ticks li::before{content:"";position:absolute;left:4px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+
+/* CTA strip */
+.cta{background:var(--berry-deep);color:#fff;border-radius:28px;padding:clamp(28px,4vw,52px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.cta h2{margin:0}
+.cta p{color:#ffd9e6;margin:0}
+.cta .btn{background:#fff;color:var(--berry-deep);border-color:#fff}
+
+/* Page header */
+.page-head{background:var(--bg2);border-bottom:1px solid var(--line)}
+.page-head p{color:var(--muted)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;align-items:start}
+form{display:grid;gap:16px}
+label{font-weight:800;display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:48px;width:100%}
+textarea{min-height:150px;resize:vertical}
+.email-big{font-size:clamp(18px,2.2vw,24px);font-weight:800;overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--muted)}
+.form-msg{font-weight:700;color:var(--berry)}
+
+/* Privacy */
+.policy{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
+.toc{position:sticky;top:96px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.toc ol{margin:0;padding-left:20px}
+.toc a{text-decoration:none;color:var(--ink);display:block;padding:4px 0;font-size:15px}
+.toc a:hover{color:var(--berry)}
+.policy section{margin-bottom:36px}
+.policy h2{font-size:clamp(24px,2.6vw,30px)}
+.policy li{margin-bottom:6px;max-width:68ch}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-bottom:1em}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg2)}
+.scroll{overflow-x:auto}
+
+/* Footer */
+.site-footer{background:#2b0f1d;color:#f7dbe5;padding:48px max(5vw,18px) 28px}
+.foot{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:28px}
+.site-footer a{color:#fff;text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer li{margin-bottom:8px}
+.site-footer h3{font-size:18px;color:var(--gold)}
+.copy{max-width:1200px;margin:28px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);font-size:14px;color:#d7b6c4}
+
+@media(max-width:860px){
+  .menu-btn{display:block}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(5vw,18px) 16px}
+  .menu.open{display:flex}
+  .policy{grid-template-columns:minmax(0,1fr)}
+  .toc{position:static}
+  .contact-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:700px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero-art{order:-1;max-width:420px;margin:0 auto;width:100%}
+  .game{grid-template-columns:minmax(0,1fr)}
+  .foot{grid-template-columns:minmax(0,1fr)}
+}
